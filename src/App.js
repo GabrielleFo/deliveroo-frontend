@@ -37,7 +37,18 @@ function App() {
                   <div>
                     <h4> {elem.name}</h4>
                     {elem.meals.map((meal, index) => {
-                      return <div>{meal.title}</div>;
+                      return (
+                        <div>
+                          <h5>{meal.title} </h5>
+                          <p>{meal.description}</p>
+                          <p> {meal.price}</p>
+                          <img
+                            className="images"
+                            src={meal.picture}
+                            alt={meal.title}
+                          />
+                        </div>
+                      );
                     })}
                   </div>
                 );

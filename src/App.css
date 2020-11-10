@@ -1,4 +1,7 @@
 /* Other rules */
 .montorgueil img {
+  width: 500px;
+}
+.images {
   width: 300px;
 }
