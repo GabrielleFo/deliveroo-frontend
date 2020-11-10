@@ -31,11 +31,18 @@ function App() {
           </div>
           <div className="categories">
             <h3>{food.categories[0].name}</h3>
-            <h4>
+            <div>
               {food.categories.map((elem, index) => {
-                return <div> {elem.name}</div>;
+                return (
+                  <div>
+                    <h4> {elem.name}</h4>
+                    {elem.meals.map((meal, index) => {
+                      return <div>{meal.title}</div>;
+                    })}
+                  </div>
+                );
               })}
-            </h4>
+            </div>
           </div>
         </>
       )}
