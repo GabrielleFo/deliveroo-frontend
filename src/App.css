@@ -2,6 +2,21 @@
 .montorgueil img {
   width: 500px;
 }
+.montorgueil div {
+  display: flex;
+}
+.montorgueil {
+  border: 2px solid blue;
+}
 .images {
   width: 300px;
+}
+.meal {
+  display: flex;
+  width: 500px;
+  border: 2px solid green;
+}
+.meals {
+  display: flex;
+  border: 2px solid black;
 }

@@ -26,27 +26,32 @@ function App() {
         <>
           <div className="montorgueil">
             <h2>{food.restaurant.name}</h2>
-            <p>{food.restaurant.description}</p>
-            <img src={food.restaurant.picture} alt={food.restaurant.title} />
+            <div>
+              <p>{food.restaurant.description}</p>
+              <img src={food.restaurant.picture} alt={food.restaurant.title} />
+            </div>
           </div>
           <div className="categories">
-            <h3>{food.categories[0].name}</h3>
             <div>
               {food.categories.map((elem, index) => {
                 return (
-                  <div>
+                  <div className="meals">
                     <h4> {elem.name}</h4>
                     {elem.meals.map((meal, index) => {
                       return (
-                        <div>
+                        <div className="Meal">
                           <h5>{meal.title} </h5>
-                          <p>{meal.description}</p>
-                          <p> {meal.price}</p>
-                          <img
-                            className="images"
-                            src={meal.picture}
-                            alt={meal.title}
-                          />
+                          <div className="meal">
+                            <p>{meal.description}</p>
+                            <p> {meal.price}</p>
+                            {meal.picture && (
+                              <img
+                                className="images"
+                                src={meal.picture}
+                                alt={meal.title}
+                              />
+                            )}
+                          </div>
                         </div>
                       );
                     })}
