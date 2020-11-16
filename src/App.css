@@ -1,22 +1,61 @@
 /* Other rules */
-.montorgueil img {
-  width: 500px;
+.images {
+  height: 100px;
 }
-.montorgueil div {
+body {
+  margin: 0px;
+}
+/*LOGO*/
+.HEADER {
+  border-bottom: 1px solid #eaebeb;
+  height: 60px;
+}
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  height: 60px;
+}
+/*HEADER*/
+.header {
   display: flex;
+  background-color: white;
 }
 .montorgueil {
-  border: 2px solid blue;
+  width: 50%;
 }
-.images {
-  width: 300px;
+
+.image-header {
+  width: 50%;
 }
-.meal {
-  display: flex;
+.image-header img {
   width: 500px;
-  border: 2px solid green;
+}
+/*MENUS RESTAURANT*/
+.categories {
+  background-color: #f4f5f5;
+}
+.restaurant-details {
+  display: flex;
+  flex-direction: row;
+}
+.panier {
+  width: 500px;
 }
 .meals {
   display: flex;
-  border: 2px solid black;
+  flex: 1;
+  flex-direction: column;
+}
+.meal-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  width: 400px;
+}
+.meals-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
