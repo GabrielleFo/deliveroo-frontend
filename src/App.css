@@ -1,61 +1,129 @@
-/* Other rules */
-.images {
-  height: 100px;
-}
-body {
-  margin: 0px;
-}
-/*LOGO*/
-.HEADER {
-  border-bottom: 1px solid #eaebeb;
-  height: 60px;
-}
-.wrapper {
-  width: 1200px;
-  margin: 0 auto;
-}
-.logo {
-  height: 60px;
-}
-/*HEADER*/
-.header {
-  display: flex;
-  background-color: white;
-}
-.montorgueil {
-  width: 50%;
+* {
+  box-sizing: border-box;
 }
 
-.image-header {
-  width: 50%;
+body {
+  margin: 0;
+  background: #f3f5f5;
+  color: #2e3333;
 }
-.image-header img {
-  width: 500px;
+header {
+  display: block;
 }
-/*MENUS RESTAURANT*/
-.categories {
-  background-color: #f4f5f5;
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 1em;
 }
-.restaurant-details {
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 5px;
+  font-weight: bold;
+}
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.topBar {
+  height: 60px;
+  border-bottom: 1px solid #e9ebeb;
+}
+.topBar--center,
+.restaurantInfos--center {
+  margin: 0 auto;
+  width: 96vw;
+  max-width: 1200px;
   display: flex;
   flex-direction: row;
+  height: 100%;
+  align-items: center;
 }
-.panier {
-  width: 500px;
+.logo {
+  height: 200%;
 }
-.meals {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+
+.restaurantInfos--center {
+  padding: 30px 0;
+  align-items: flex-start;
 }
-.meal-container {
+.restaurantInfos--cover {
+  width: 350px;
+  border-radius: 5px;
+
+  background: #f3f5f5;
+}
+.restaurantInfos--text p {
+  color: #868a8a;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+/*deuxieme partie*/
+.Content--center {
+  margin: 0 auto;
+  width: 96vw;
+  max-width: 1200px;
   display: flex;
   flex-direction: row;
-  background-color: white;
-  width: 400px;
+  align-items: flex-start;
 }
-.meals-container {
+.Menu {
+  flex: 1 1;
+  margin-right: 30px;
+  margin-bottom: -25px;
+}
+.Content--center {
+  margin: 0 auto;
+  width: 96vw;
+  max-width: 1200px;
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.MenuItem--picture img {
+  height: 130px;
+  width: 130px;
+  border-radius: 5px;
+}
+.MenuItems--items {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   flex-wrap: wrap;
-  justify-content: space-around;
+  margin: 0 -10px;
+}
+
+.MenuItem {
+  width: 40%;
+  min-width: 300px;
+  padding: 0 10px 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MenuItem {
+  border-radius: 5px;
+  height: 160px;
+  background: #fff;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  cursor: pointer;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  margin: 0 5px 5px 0;
+  overflow: hidden;
 }

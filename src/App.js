@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./reset.css";
 import "./App.css";
-import Logo from "./assets/deliveroo.png";
+
+import Logo from "./assets/deliveroo.svg";
 import axios from "axios";
 
 function App() {
@@ -26,51 +27,49 @@ function App() {
         <p>En cours de chargement ...</p>
       ) : (
         <>
-          <div className="HEADER">
-            <div className="wrapper">
-              <img src={Logo} alt="deliveroo" className="logo" />
+          <header className="Header">
+            <div className="topBar">
+              <div className="topBar--center">
+                <img src={Logo} alt="deliveroo" className="logo" />
+              </div>
             </div>
-          </div>
-          <div className="header">
-            <div className="montorgueil ">
-              <h2>{food.restaurant.name}</h2>
-              <p>{food.restaurant.description}</p>
-            </div>
-            <div className="image-header">
-              <img src={food.restaurant.picture} alt={food.restaurant.title} />
-            </div>
-          </div>
 
-          <div className="categories">
-            <div className="wrapper">
-              <div className="restaurant-details">
+            <div className="restaurantInfos">
+              <div className="restaurantInfos--center ">
+                <div className="restaurantInfos--text">
+                  <h1>{food.restaurant.name}</h1>
+                  <p>{food.restaurant.description}</p>
+                </div>
+                <img
+                  className="restaurantInfos--cover"
+                  src={food.restaurant.picture}
+                  alt={food.restaurant.title}
+                />
+              </div>
+            </div>
+          </header>
+
+          <div className="Content">
+            <div className="Content--center">
+              <div className="Menu">
                 {food.categories.map((elem, index) => {
                   return (
-                    <div className="meals">
-                      <h4> {elem.name}</h4>
-                      <div className="meals-container">
+                    <div className="MenuItems">
+                      <h2> {elem.name}</h2>
+                      <div className="MenuItems--items">
                         {elem.meals.map((meal, index) => {
                           return (
-                            <div className="meal-container">
-                              <div
-                                onClick={() => {
-                                  console.log(meal);
-                                }}
-                              >
-                                <div className="description-card">
-                                  <h5>{meal.title} </h5>
+                            <div className="MenuItem">
+                              <div className="MenuItem--card">
+                                <h3>{meal.title} </h3>
 
-                                  <p>{meal.description}</p>
-                                  <p> {meal.price}</p>
-                                </div>
+                                <p>{meal.description}</p>
+                                <p> {meal.price}</p>
                               </div>
-                              <div>
+
+                              <div className="MenuItem--picture">
                                 {meal.picture && (
-                                  <img
-                                    className="images"
-                                    src={meal.picture}
-                                    alt={meal.title}
-                                  />
+                                  <img src={meal.picture} alt={meal.title} />
                                 )}
                               </div>
                             </div>
@@ -80,10 +79,10 @@ function App() {
                     </div>
                   );
                 })}
-                <div className="panier">
-                  <h2>Panier</h2>
-                  <div className="list-panier"></div>
-                </div>
+              </div>
+              <div className="Cart">
+                <h2>Panier</h2>
+                <div className="list-panier"></div>
               </div>
             </div>
           </div>
