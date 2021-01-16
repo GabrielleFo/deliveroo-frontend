@@ -1,10 +1,15 @@
 * {
   box-sizing: border-box;
 }
-
+:root {
+  --white: #f3f5f5;
+  --lightGreen: #00cdbd;
+  --grey: #868a8a;
+  --orange: #ff8000;
+}
 body {
   margin: 0;
-  background: #f3f5f5;
+  background: var(--white);
   color: #2e3333;
 }
 header {
@@ -36,15 +41,10 @@ h2 {
   font-weight: bold;
 }
 h3 {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-top: 0;
 }
 p {
-  color: #868a8a;
+  color: var(--grey);
 }
 .topBar {
   height: 60px;
@@ -72,7 +72,7 @@ p {
   width: 350px;
   border-radius: 5px;
 
-  background: #f3f5f5;
+  background: var(--white);
 }
 .restaurantInfos--text p {
   font-size: 1.2rem;
@@ -138,12 +138,12 @@ p {
   overflow: hidden;
 }
 .MenuItem--price {
-  color: #808484;
+  color: var(--grey);
   font-size: 1.1rem;
 }
 
 .MenuItem--popular {
-  color: #ff8000;
+  color: var(--orange);
 
   margin-left: 20px;
 }
@@ -168,11 +168,42 @@ p {
   margin: 10px;
   border-radius: 5px;
   padding: 1rem;
-  background: #00cdbd;
+  background: var(--lightGreen);
   color: #fff;
   border: none;
   font-weight: 700;
   font-size: 1rem;
+}
+.Cart--items {
+  border-bottom: 1px solid #d1d7d7;
+  margin: 0 10px;
+  max-height: calc(100vh - 300px);
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+.Cart--line {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 0;
+  justify-content: space-between;
+}
+
+.Cart--counter {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  color: var(--grey);
+}
+.Cart--counter span {
+  margin-right: 5px;
+}
+
+.icons {
+  border: var(--lightGreen) 1px solid;
+  border-radius: 50%;
+  padding: 2px;
+  color: var(--lightGreen);
 }
 @media (max-width: 645px) {
   .MenuItem {

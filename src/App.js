@@ -7,8 +7,13 @@ import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faStar } from "@fortawesome/free-solid-svg-icons";
-library.add(faEnvelope, faStar);
+import {
+  faEnvelope,
+  faStar,
+  faMinus,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faEnvelope, faStar, faMinus, faPlus);
 
 function App() {
   // état qui permets de recupérer les données du back
@@ -108,7 +113,7 @@ function App() {
                                   <span className="MenuItem--popular">
                                     <FontAwesomeIcon
                                       icon="star"
-                                      className="icons"
+                                      className="star"
                                     />
                                     populaire
                                   </span>
@@ -129,14 +134,55 @@ function App() {
                 })}
               </div>
               <div className="Cart">
-                <div className="Cart--Card">
-                  <button class="Cart--validate">Valider mon panier</button>
+                <div className="Cart--card">
+                  <button className="Cart--validate">Valider mon panier</button>
                   {selectedProducts.map((selectedProduct) => {
                     return (
                       <div>
-                        <p>{selectedProduct.title}</p>
-                        <p>{selectedProduct.quantity}</p>
-                        <p>{selectedProduct.price}</p>
+                        <div className="Cart--items">
+                          <div className="Cart--line">
+                            <div className="Cart--counter">
+                              <span>
+                                <FontAwesomeIcon
+                                  icon="minus"
+                                  className="icons"
+                                />
+                              </span>
+                              <span>{selectedProduct.quantity}</span>
+                              <span>
+                                <FontAwesomeIcon
+                                  icon="plus"
+                                  className="icons"
+                                />
+                              </span>
+                            </div>
+                            <span>{selectedProduct.title}</span>
+
+                            <span>{selectedProduct.price}€</span>
+                          </div>
+                        </div>
+                        <div className="Cart--results">
+                          <div className="Cart--result-line">
+                            <span className="Cart--result-name">
+                              Sous total
+                            </span>
+                            <span className="Cart--amount">
+                              {selectedProduct.price * selectedProduct.quantity}
+                              €
+                            </span>
+                          </div>
+                        </div>
+                        <div className="Cart--total">
+                          <span className="Cart--result-name">
+                            Frais de livraison :3€
+                          </span>
+                          <p className="Cart--amount">
+                            Total :
+                            {selectedProduct.price * selectedProduct.quantity +
+                              3}
+                            €
+                          </p>
+                        </div>
                       </div>
                     );
                   })}
