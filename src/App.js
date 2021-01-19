@@ -17,21 +17,22 @@ library.add(faEnvelope, faStar, faMinus, faPlus);
 
 function App() {
   // état qui permets de recupérer les données du back
-  const [food, setFood] = useState({});
+  const [food, setFood] = useState();
 
   // état qui permets de recuperer les données pour le panier
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const [isLoading, setIsloading] = useState(true);
 
-  const fetchData = async () => {
-    const response = await axios.get("https://deliveroob.herokuapp.com/");
-    console.log(response.data);
-    setFood(response.data);
-
-    setIsloading(false);
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("https://deliveroob.herokuapp.com/");
+      console.log(response.data);
+      setFood(response.data);
+
+      setIsloading(false);
+    };
+
     fetchData();
   }, []);
 
@@ -87,6 +88,7 @@ function App() {
                                 for (let i = 0; i < copy.length; i++) {
                                   if (copy[i].title === meal.title) {
                                     copy[i].quantity++;
+
                                     isProductFound = true;
                                   }
                                 }
@@ -119,7 +121,6 @@ function App() {
                                   </span>
                                 )}
                               </div>
-
                               <div className="MenuItem--picture">
                                 {meal.picture && (
                                   <img src={meal.picture} alt={meal.title} />
@@ -135,7 +136,7 @@ function App() {
               </div>
               <div className="Cart">
                 <div className="Cart--card">
-                  <button className="Cart--validate">Valider mon panier</button>
+                  <p className="Cart--validate">Mon panier</p>
                   {selectedProducts.map((selectedProduct) => {
                     return (
                       <div>
@@ -161,7 +162,7 @@ function App() {
                             <span>{selectedProduct.price}€</span>
                           </div>
                         </div>
-                        <div className="Cart--results">
+                        {/* <div className="Cart--results">
                           <div className="Cart--result-line">
                             <span className="Cart--result-name">
                               Sous total
@@ -171,8 +172,8 @@ function App() {
                               €
                             </span>
                           </div>
-                        </div>
-                        <div className="Cart--total">
+                        </div> */}
+                        {/* <div className="Cart--total">
                           <span className="Cart--result-name">
                             Frais de livraison :3€
                           </span>
@@ -182,7 +183,7 @@ function App() {
                               3}
                             €
                           </p>
-                        </div>
+                        </div> */}
                       </div>
                     );
                   })}
