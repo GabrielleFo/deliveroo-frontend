@@ -206,8 +206,3 @@ p {
   padding: 2px;
   color: var(--lightGreen);
 }
-@media (max-width: 645px) {
-  .MenuItem {
-    height: 200px;
-  }
-}

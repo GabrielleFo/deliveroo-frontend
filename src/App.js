@@ -36,6 +36,11 @@ function App() {
     fetchData();
   }, []);
 
+  let total = 2.5;
+  for (let i = 0; i < selectedProducts.length; i++) {
+    total += selectedProducts[i].quantity * selectedProducts[i].price;
+  }
+
   return (
     <div>
       {isLoading === true ? (
@@ -162,31 +167,11 @@ function App() {
                             <span>{selectedProduct.price}€</span>
                           </div>
                         </div>
-                        {/* <div className="Cart--results">
-                          <div className="Cart--result-line">
-                            <span className="Cart--result-name">
-                              Sous total
-                            </span>
-                            <span className="Cart--amount">
-                              {selectedProduct.price * selectedProduct.quantity}
-                              €
-                            </span>
-                          </div>
-                        </div> */}
-                        {/* <div className="Cart--total">
-                          <span className="Cart--result-name">
-                            Frais de livraison :3€
-                          </span>
-                          <p className="Cart--amount">
-                            Total :
-                            {selectedProduct.price * selectedProduct.quantity +
-                              3}
-                            €
-                          </p>
-                        </div> */}
                       </div>
                     );
                   })}
+                  <p>frais de livraison : 2.50€</p>
+                  <p>Total: {total}€</p>
                 </div>
               </div>
             </div>
