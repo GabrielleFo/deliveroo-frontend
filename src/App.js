@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./reset.css";
 import "./App.css";
 
-import Logo from "./assets/deliveroo.svg";
+//importation des composants
+import Header from "./components/Header";
+import Infos from "./components/Infos";
+import Category from "./components/Category";
+import Cart from "./components/Cart";
+
 import axios from "axios";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faEnvelope,
@@ -35,10 +39,11 @@ function App() {
 
     fetchData();
   }, []);
-
+  //calcul du panier
   let total = 2.5;
   for (let i = 0; i < selectedProducts.length; i++) {
     total += selectedProducts[i].quantity * selectedProducts[i].price;
+    // total = total + selectedProducts[i].quantity * selectedProducts[i].price;
   }
 
   return (
@@ -47,131 +52,44 @@ function App() {
         <p>En cours de chargement ...</p>
       ) : (
         <>
-          <header className="Header">
-            <div className="topBar">
-              <div className="topBar--center">
-                <img src={Logo} alt="deliveroo" className="logo" />
-              </div>
-            </div>
+          <Header />
 
-            <div className="restaurantInfos">
-              <div className="restaurantInfos--center ">
-                <div className="restaurantInfos--text">
-                  <h1>{food.restaurant.name}</h1>
-                  <p>{food.restaurant.description}</p>
-                </div>
-                <img
-                  className="restaurantInfos--cover"
-                  src={food.restaurant.picture}
-                  alt={food.restaurant.title}
-                />
-              </div>
-            </div>
-          </header>
+          <Infos food={food} />
 
           <div className="Content">
             <div className="Content--center">
               <div className="Menu">
-                {food.categories.map((elem, index) => {
+                {food.categories.map((elem, id) => {
                   // condition qui permets juste d'afficher les categories remplies
                   if (elem.meals.length === 0) {
                     return null;
                   }
                   return (
-                    <div className="MenuItems">
-                      <h2> {elem.name}</h2>
-                      <div className="MenuItems--items">
-                        {elem.meals.map((meal, index) => {
-                          return (
-                            <div
-                              className="MenuItem"
-                              onClick={() => {
-                                //crétion d'une copie du tableau
-                                const copy = [...selectedProducts];
-                                //recherche du produit dans le panier
-                                let isProductFound = false;
-                                for (let i = 0; i < copy.length; i++) {
-                                  if (copy[i].title === meal.title) {
-                                    copy[i].quantity++;
-
-                                    isProductFound = true;
-                                  }
-                                }
-                                //si le produit n'y est pas
-                                if (isProductFound === false) {
-                                  copy.push({
-                                    title: meal.title,
-                                    quantity: 1,
-                                    price: meal.price,
-                                  });
-                                }
-
-                                setSelectedProducts(copy);
-                              }}
-                            >
-                              <div className="MenuItem--card">
-                                <h3>{meal.title} </h3>
-
-                                <p>{meal.description.slice(0, 70)}</p>
-                                <span className="MenuItem--price">
-                                  {meal.price + " €"}
-                                </span>
-                                {meal.popular && (
-                                  <span className="MenuItem--popular">
-                                    <FontAwesomeIcon
-                                      icon="star"
-                                      className="star"
-                                    />
-                                    populaire
-                                  </span>
-                                )}
-                              </div>
-                              <div className="MenuItem--picture">
-                                {meal.picture && (
-                                  <img src={meal.picture} alt={meal.title} />
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+                    <Category
+                      elem={elem}
+                      selectedProducts={selectedProducts}
+                      setSelectedProducts={setSelectedProducts}
+                    />
                   );
                 })}
               </div>
               <div className="Cart">
                 <div className="Cart--card">
                   <p className="Cart--validate">Mon panier</p>
-                  {selectedProducts.map((selectedProduct) => {
+                  {selectedProducts.map((product, index) => {
                     return (
-                      <div>
-                        <div className="Cart--items">
-                          <div className="Cart--line">
-                            <div className="Cart--counter">
-                              <span>
-                                <FontAwesomeIcon
-                                  icon="minus"
-                                  className="icons"
-                                />
-                              </span>
-                              <span>{selectedProduct.quantity}</span>
-                              <span>
-                                <FontAwesomeIcon
-                                  icon="plus"
-                                  className="icons"
-                                />
-                              </span>
-                            </div>
-                            <span>{selectedProduct.title}</span>
-
-                            <span>{selectedProduct.price}€</span>
-                          </div>
-                        </div>
-                      </div>
+                      //transmettre les props d'une page à l'autre
+                      <Cart
+                        index={index}
+                        selectedProducts={selectedProducts}
+                        setSelectedProducts={setSelectedProducts}
+                        product={product}
+                      />
                     );
                   })}
                   <p>frais de livraison : 2.50€</p>
-                  <p>Total: {total}€</p>
+                  {/* toFixed:permets de fixer 2 chiffres uniquement après la virgule */}
+                  <p>Total: {total.toFixed(2)}€</p>
                 </div>
               </div>
             </div>
