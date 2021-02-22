@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 Une replique de deliveroo simplifié
+
+Creation & Utilisation d'une api hébergé sur heroku
+
+Création d'un panier 
 
 ## Available Scripts
 
